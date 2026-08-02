@@ -315,6 +315,37 @@
 
           </div>
         </div>
+
+        <!-- Screenshots -->
+        <div class="mt-16 reveal">
+          <p data-i18n="myride.screens_label" class="text-xs font-medium text-red-600 tracking-[0.25em] uppercase mb-4">Screenshots</p>
+          <div class="flex gap-4 overflow-x-auto pb-2 -mx-6 px-6 sm:mx-0 sm:px-0">
+            <button onclick="openLightbox(0)" class="shrink-0 w-40 sm:w-48 cursor-zoom-in">
+              <img src="assets/myride/planner.png" alt="MyRIDE route planner" loading="lazy"
+                   class="w-full rounded-lg border border-neutral-800 hover:border-neutral-600 transition-colors" />
+            </button>
+            <button onclick="openLightbox(1)" class="shrink-0 w-40 sm:w-48 cursor-zoom-in">
+              <img src="assets/myride/navigation-map.png" alt="MyRIDE turn-by-turn navigation, map view" loading="lazy"
+                   class="w-full rounded-lg border border-neutral-800 hover:border-neutral-600 transition-colors" />
+            </button>
+            <button onclick="openLightbox(2)" class="shrink-0 w-40 sm:w-48 cursor-zoom-in">
+              <img src="assets/myride/navigation-readable.png" alt="MyRIDE turn-by-turn navigation, readable mode" loading="lazy"
+                   class="w-full rounded-lg border border-neutral-800 hover:border-neutral-600 transition-colors" />
+            </button>
+            <button onclick="openLightbox(3)" class="shrink-0 w-40 sm:w-48 cursor-zoom-in">
+              <img src="assets/myride/dashboard.png" alt="MyRIDE ride dashboard" loading="lazy"
+                   class="w-full rounded-lg border border-neutral-800 hover:border-neutral-600 transition-colors" />
+            </button>
+            <button onclick="openLightbox(4)" class="shrink-0 w-40 sm:w-48 cursor-zoom-in">
+              <img src="assets/myride/statistics.png" alt="MyRIDE vehicle statistics" loading="lazy"
+                   class="w-full rounded-lg border border-neutral-800 hover:border-neutral-600 transition-colors" />
+            </button>
+            <button onclick="openLightbox(5)" class="shrink-0 w-40 sm:w-48 cursor-zoom-in">
+              <img src="assets/myride/history.png" alt="MyRIDE route history" loading="lazy"
+                   class="w-full rounded-lg border border-neutral-800 hover:border-neutral-600 transition-colors" />
+            </button>
+          </div>
+        </div>
       </div>
 
       <!-- ── MyPET panel ── -->
@@ -540,6 +571,32 @@
   </section>
 
 
+  <!-- ═══════════════════════ LIGHTBOX ═══════════════════════ -->
+  <div id="lightbox" onclick="closeLightbox(event)"
+       class="hidden fixed inset-0 z-[100] bg-black/90 backdrop-blur-sm items-center justify-center p-4 sm:p-10">
+    <button onclick="closeLightbox(event)" aria-label="Close"
+            class="absolute top-4 right-4 sm:top-6 sm:right-6 text-neutral-400 hover:text-white transition-colors">
+      <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M6 18L18 6M6 6l12 12"/>
+      </svg>
+    </button>
+    <button onclick="lightboxNav(event, -1)" aria-label="Previous"
+            class="absolute left-1 sm:left-6 text-neutral-400 hover:text-white transition-colors p-2">
+      <svg class="w-7 h-7 sm:w-8 sm:h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M15 19l-7-7 7-7"/>
+      </svg>
+    </button>
+    <img id="lightbox-img" src="" alt="" onclick="event.stopPropagation()"
+         class="max-h-[88vh] max-w-[85vw] rounded-lg shadow-2xl border border-neutral-800" />
+    <button onclick="lightboxNav(event, 1)" aria-label="Next"
+            class="absolute right-1 sm:right-6 text-neutral-400 hover:text-white transition-colors p-2">
+      <svg class="w-7 h-7 sm:w-8 sm:h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 5l7 7-7 7"/>
+      </svg>
+    </button>
+  </div>
+
+
   <!-- ═══════════════════════ FOOTER ═══════════════════════ -->
   <footer class="py-10 px-6 border-t border-neutral-900">
     <div class="max-w-5xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4">
@@ -590,6 +647,7 @@
         'myride.feat6.desc': 'Local data, zero cloud',
         'myride.feat7.title': 'Turn-by-turn Navigation',
         'myride.feat7.desc': 'Offline route planning, live guidance, readable mode',
+        'myride.screens_label': 'Screenshots',
         'mypet.desc': "Complete diary of your pet's life. Feeding, vaccinations, vet visits, daily observations — everything in one place. Your data stays with you. Always.",
         'mypet.cta_sub': 'Test on Android',
         'mypet.cta_main': 'Google Play — Early Access',
@@ -652,6 +710,7 @@
         'myride.feat6.desc': 'Dane lokalne, zero chmury',
         'myride.feat7.title': 'Nawigacja krok po kroku',
         'myride.feat7.desc': 'Planowanie tras offline, prowadzenie na żywo, tryb czytelny',
+        'myride.screens_label': 'Zrzuty ekranu',
         'mypet.desc': 'Kompletny dziennik życia Twojego zwierzaka. Karmienie, szczepienia, wizyty weterynaryjne, codzienne obserwacje — wszystko w jednym miejscu. Twoje dane zostają przy Tobie. Zawsze.',
         'mypet.cta_sub': 'Testuj na Android',
         'mypet.cta_main': 'Google Play — Wczesny dostęp',
@@ -714,6 +773,7 @@
         'myride.feat6.desc': 'Lokale Daten, keine Cloud',
         'myride.feat7.title': 'Turn-by-Turn-Navigation',
         'myride.feat7.desc': 'Offline-Routenplanung, Live-Führung, Übersichtsmodus',
+        'myride.screens_label': 'Screenshots',
         'mypet.desc': 'Vollständiges Tagebuch des Lebens deines Tieres. Fütterung, Impfungen, Tierarztbesuche, tägliche Beobachtungen — alles an einem Ort. Deine Daten bleiben bei dir. Immer.',
         'mypet.cta_sub': 'Auf Android testen',
         'mypet.cta_main': 'Google Play — Früher Zugang',
@@ -776,6 +836,7 @@
         'myride.feat6.desc': 'Données locales, zéro cloud',
         'myride.feat7.title': 'Navigation pas à pas',
         'myride.feat7.desc': "Planification d'itinéraires hors ligne, guidage en direct, mode lisible",
+        'myride.screens_label': "Captures d'écran",
         'mypet.desc': 'Journal complet de la vie de votre animal. Alimentation, vaccinations, visites vétérinaires, observations quotidiennes — tout en un seul endroit. Vos données restent avec vous. Toujours.',
         'mypet.cta_sub': 'Tester sur Android',
         'mypet.cta_main': 'Google Play — Accès anticipé',
@@ -838,6 +899,7 @@
         'myride.feat6.desc': 'Datos locales, cero nube',
         'myride.feat7.title': 'Navegación paso a paso',
         'myride.feat7.desc': 'Planificación de rutas sin conexión, guía en vivo, modo lectura',
+        'myride.screens_label': 'Capturas de pantalla',
         'mypet.desc': 'Diario completo de la vida de tu mascota. Alimentación, vacunas, visitas veterinarias, observaciones diarias — todo en un solo lugar. Tus datos se quedan contigo. Siempre.',
         'mypet.cta_sub': 'Probar en Android',
         'mypet.cta_main': 'Google Play — Acceso anticipado',
@@ -900,6 +962,50 @@
 
       localStorage.setItem('lang', lang);
     }
+
+    // ── Lightbox (MyRIDE screenshots) ────────────────────────────────────────
+    const MYRIDE_SCREENS = [
+      { src: 'assets/myride/planner.png',             alt: 'MyRIDE route planner' },
+      { src: 'assets/myride/navigation-map.png',       alt: 'MyRIDE turn-by-turn navigation, map view' },
+      { src: 'assets/myride/navigation-readable.png',  alt: 'MyRIDE turn-by-turn navigation, readable mode' },
+      { src: 'assets/myride/dashboard.png',            alt: 'MyRIDE ride dashboard' },
+      { src: 'assets/myride/statistics.png',           alt: 'MyRIDE vehicle statistics' },
+      { src: 'assets/myride/history.png',              alt: 'MyRIDE route history' },
+    ];
+    let lightboxIndex = 0;
+
+    function renderLightbox() {
+      const item = MYRIDE_SCREENS[lightboxIndex];
+      const img = document.getElementById('lightbox-img');
+      img.src = item.src;
+      img.alt = item.alt;
+    }
+    function openLightbox(i) {
+      lightboxIndex = i;
+      renderLightbox();
+      const lb = document.getElementById('lightbox');
+      lb.classList.remove('hidden');
+      lb.classList.add('flex');
+      document.body.style.overflow = 'hidden';
+    }
+    function closeLightbox(e) {
+      if (e) e.stopPropagation();
+      const lb = document.getElementById('lightbox');
+      lb.classList.add('hidden');
+      lb.classList.remove('flex');
+      document.body.style.overflow = '';
+    }
+    function lightboxNav(e, dir) {
+      e.stopPropagation();
+      lightboxIndex = (lightboxIndex + dir + MYRIDE_SCREENS.length) % MYRIDE_SCREENS.length;
+      renderLightbox();
+    }
+    document.addEventListener('keydown', e => {
+      if (document.getElementById('lightbox').classList.contains('hidden')) return;
+      if (e.key === 'Escape')     closeLightbox();
+      if (e.key === 'ArrowLeft')  lightboxNav(e, -1);
+      if (e.key === 'ArrowRight') lightboxNav(e, 1);
+    });
 
     // ── Tab switcher ──────────────────────────────────────────────────────────
     function switchTab(tab) {
